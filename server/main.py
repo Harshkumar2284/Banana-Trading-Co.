@@ -21,21 +21,23 @@ cards = [
         "multiplier": 0.1
     }
 ]
+price_lock = asyncio.Lock()
 
 # Market Simulation
 async def market_simulation ():
     while True:
-        for card in cards:
-            print(f'Name:{card["name"]}, Price: {card["price"]}')
         await asyncio.sleep(5)  
-        for card in cards:
-            direction = random.choice([1+card["multiplier"], 1-card["multiplier"]])
-            if direction > 1:
-                print("Incrementing price")
-            else:
-                print("Decrementing price")
-            card["price"] *= direction
-            card["price"] = round(card["price"], 2)
+        # Keep every market price update separate from player purchases.
+        async with price_lock:
+            for card in cards:
+                print(f'Name:{card["name"]}, Price: {card["price"]}')
+                direction = random.choice([1+card["multiplier"], 1-card["multiplier"]])
+                if direction > 1:
+                    print("Incrementing price")
+                else:
+                    print("Decrementing price")
+                card["price"] *= direction
+                card["price"] = round(card["price"], 2)
 
 @app.on_event("startup")
 async def startup_event():
@@ -44,8 +46,9 @@ async def startup_event():
 
 # GET CARDS ENDPOINT
 @app.get("/cards")
-def get_cards():
-    return cards
+async def get_cards():
+    async with price_lock:
+        return [card.copy() for card in cards]
 
 
 # BUY CARD ENDPOINT
@@ -59,9 +62,9 @@ def cardUpdate(cardName:str, action:str, quantity:int):
             return card
 
 @app.post("/buy_card/{card_name}")
-def buy_card(cardName:str):
-    for card in cards:
-        if card["name"] == cardName:
-            cardUpdate(cardName, "buy", 1)
-            return card
-    return {"message": f"Card {cardName} not found."}
+async def buy_card(card_name: str):
+    async with price_lock:
+        updated_card = cardUpdate(card_name, "buy", 1)
+        if updated_card:
+            return updated_card.copy()
+    return {"message": f"Card {card_name} not found."}
