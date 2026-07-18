@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body{
+    background: url('./assets/background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.yuyu-regular {
+  font-family: "Yuyu", sans-serif;
+  
+  font-style: normal;
+}
+.primary-font {
+  font-family: "Galindo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.heading {
+  font-family: "Suez One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.primary-color{
+  color: #2F210B ;
+}

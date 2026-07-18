@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Client dependencies and builds
+client/node_modules/
+client/dist/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
