@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 type LoginFormProps = {
   onSwitchToRegister: () => void;
 };
 
 export default function LoginForm({ onSwitchToRegister }: LoginFormProps) {
+  const navigate = useNavigate();
+  const handleSubmit = ()=>{
+    navigate("/dashboard");
+  }
   return (
     <div className="w-[min(92vw,32rem)] rounded-[1.75rem] border-4 border-[#4A2D0B] bg-[#211506] p-2 shadow-2xl">
       <div className="flex items-center gap-2 overflow-hidden rounded-t-2xl border-b border-[#876726] bg-[#171006] px-3 py-2 text-[10px] font-bold tracking-wide text-[#FFF0A6] sm:text-xs">
@@ -54,7 +60,7 @@ export default function LoginForm({ onSwitchToRegister }: LoginFormProps) {
             <button type="button" className="cursor-pointer underline decoration-[#B98B1D] underline-offset-2 hover:text-[#2F210B]">Forgot password?</button>
           </div>
 
-          <button type="submit" className="primary-font cursor-pointer rounded-xl border-2 border-[#876726] border-b-4 bg-linear-to-t from-[#E8C84F] to-[#FFF6B9] py-3 text-2xl primary-color shadow-[0_4px_0_#876726] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_0_#876726] active:translate-y-0 active:shadow-[0_2px_0_#876726]">
+          <button type="submit" className="primary-font cursor-pointer rounded-xl border-2 border-[#876726] border-b-4 bg-linear-to-t from-[#E8C84F] to-[#FFF6B9] py-3 text-2xl primary-color shadow-[0_4px_0_#876726] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_0_#876726] active:translate-y-0 active:shadow-[0_2px_0_#876726]" onClick={handleSubmit} >
             Start Trading
           </button>
 
