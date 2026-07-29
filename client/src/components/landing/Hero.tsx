@@ -51,7 +51,7 @@ export default function Hero() {
 
       <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
         <div className="absolute -inset-6 rounded-full bg-[#FFF2A2]/25 blur-3xl" />
-        <div className="relative rotate-[-2deg] rounded-[1.75rem] border-4 border-[#4A2D0B] bg-[#211506] p-2 shadow-[0_18px_0_rgba(74,45,11,0.35)] transition-transform duration-300 hover:rotate-0 hover:scale-[1.01]">
+        <div className="relative  rounded-[1.75rem] border-4 border-[#4A2D0B] bg-[#211506] p-2 shadow-[0_18px_0_rgba(74,45,11,0.35)] transition-transform duration-300 hover:rotate-0 hover:scale-[1.01]">
           <div className="flex items-center justify-between rounded-t-2xl border-b border-[#806020] bg-[#171006] px-4 py-3 text-xs font-bold text-[#FFF0A6]">
             <span>🍌 BANANA EXCHANGE</span>
             <span className="text-[#B9D45A]">● LIVE MARKET</span>
