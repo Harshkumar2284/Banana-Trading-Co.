@@ -13,6 +13,9 @@ app.use(cors({
 }))
 
 
+// Market Simulation
+require('./src/services/cards/baseCard.js')
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
