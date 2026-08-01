@@ -11,26 +11,26 @@ const cards = [{
 }]
 
 // Card Update Logic
-const updateCardPrice = () => {
-    // Pull and Swing
-    const k = 0.01
-    const maxSwing = 40
+// const updateCardPrice = () => {
+//     // Pull and Swing
+//     const k = 0.01
+//     const maxSwing = 40
 
-    cards.forEach(card => {
-        const noise = Math.random() * maxSwing * 2 - maxSwing
-        let newPrice = card.currentPrice + (k*(card.targetPrice - card.currentPrice)) + noise
-        newPrice = Math.max(Math.round(newPrice*100)/100, 1)
-        card.currentPrice = newPrice
-        // if(newPrice>card.max){
-        //     card.max = newPrice
-        // }else if(newPrice<card.min){
-        //     card.min = newPrice
-        // }
-        console.log(`Card prices updated. Current: ${card.currentPrice}`)
-    })
+//     cards.forEach(card => {
+//         const noise = Math.random() * maxSwing * 2 - maxSwing
+//         let newPrice = card.currentPrice + (k*(card.targetPrice - card.currentPrice)) + noise
+//         newPrice = Math.max(Math.round(newPrice*100)/100, 1)
+//         card.currentPrice = newPrice
+//         // if(newPrice>card.max){
+//         //     card.max = newPrice
+//         // }else if(newPrice<card.min){
+//         //     card.min = newPrice
+//         // }
+//         console.log(`Card prices updated. Current: ${card.currentPrice}`)
+//     })
 
-}
-setInterval((updateCardPrice), 100)
+// }
+// setInterval((updateCardPrice), 100)
 // const test = () => {
 //     for (let i = 0; i < 100000; i++) {
 //         const k = 0.01
@@ -51,4 +51,4 @@ setInterval((updateCardPrice), 100)
 // }
 // test()
 
-export default cards
+module.exports = cards

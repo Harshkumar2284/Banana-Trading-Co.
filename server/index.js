@@ -13,8 +13,11 @@ app.use(cors({
 }))
 
 
+// Routes Imports
+app.use('/api', require("./src/routes/market.route")) 
+
 // Market Simulation
-require('./src/services/cards/baseCard.js')
+// require('./src/services/cards/baseCard.js')
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

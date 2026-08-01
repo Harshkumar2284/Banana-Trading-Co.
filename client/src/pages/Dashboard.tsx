@@ -7,7 +7,9 @@ export default function Dashboard() {
   return (
     <div className = "w-full flex mt-10 px-10 justify-center">
       <Sidebar setActiveTab={setActiveTab} />
-      {activeTab === "market" && <Market />}
+      <div className='w-10/12 border border-black px-10 py-10 bg-[#FFF4D1] rounded-2xl '>
+        {activeTab === "market" && <Market />}
+      </div>
       
     </div>
   )
